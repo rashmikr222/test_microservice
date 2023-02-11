@@ -5,6 +5,7 @@ require('./database/connection')
 const orderRouter = require('../src/routes/order.routes')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(orderRouter)
 app.use((error, req, res, next) => {
     let status = error.status || 500
     let message = error.message || "internal server error"
@@ -15,7 +16,7 @@ app.use((error, req, res, next) => {
         message: message
     })
 })
-app.use(orderRouter)
+
 app.listen(8001, () => {
     console.log("server is up and running");
 })
