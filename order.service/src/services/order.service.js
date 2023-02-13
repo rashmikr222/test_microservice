@@ -38,9 +38,9 @@ const createOrder = async (req, res, next) => {
     const { user_id, order_name } = req.body
     try {
         const sqlInsert = `INSERT INTO order_table (user_id, order_name) VALUES(${user_id}, '${order_name}')`
-        const insert_query = mysql.format(sqlInsert)
+        // const insert_query = mysql.format(sqlInsert)
 
-        const data = await queryExecute(insert_query)
+        const data = await queryExecute(sqlInsert)
         console.log("🚀 ~ file: order.service.js:44 ~ createOrder ~ data", data)
         return res.status(200).send({
             message: "order created successfully"
