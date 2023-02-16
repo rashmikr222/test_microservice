@@ -8,6 +8,8 @@ const getUserOrder = async (req, res, next) => {
     const userID = req.params.id
     console.log("user service", userID)
     try {
+        const ipAddress = req.ipInfo
+        console.log("🚀 ~ file: user.service.js:12 ~ getUserOrder ~ ipAddress", ipAddress)
         const sqlSearch = SQLQUERYSTRING.SELECT.replace(':userID', userID)
         const data = await queryExecute(sqlSearch)
 
